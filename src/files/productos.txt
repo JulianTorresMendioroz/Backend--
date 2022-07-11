@@ -1,0 +1,17 @@
+[
+	{
+		"title": "Buzo Azul",
+		"price": "4500",
+		"id": 1
+	},
+	{
+		"title": "Buzo Rojo",
+		"price": "4000",
+		"id": 2
+	},
+	{
+		"title": "Buzo Verde",
+		"price": "5000",
+		"id": 3
+	}
+]
