@@ -57,16 +57,17 @@ router.get('/allProducts', async (req,res)=>{
   // Actualizar producto segun id
  
   router.put('/:id', async (req, res)=>{
-
-      let id = req.params.id;
-
-      let title = req.body.title;
-      let price = req.body.price;
-
-      let updatedProducts =  FileDataNueva.getAll();
-
-    //terminar este 
-     
+    let id = req.params.id;
+    console.log('req.body : ',req.body);
+    let producto = await FileDataNueva.getById(id);
+    if (producto == null) {
+        return res.json([{ "error" : "Producto no encontrado" }]);
+    }
+    else {
+        FileDataNueva.update(req.params.id, req.body.title, req.body.price, req.body.thumbnail);
+        return res.json([{ "estado": "ACTUALIZADO" }]);
+    }
+    
 
   })
 
@@ -76,9 +77,9 @@ router.get('/allProducts', async (req,res)=>{
 
     let id = req.params.id;
     
-    FileDataNueva.getById(id);
+    FileDataNueva.deleteById(id);
 
-    return res.json({Estado: "El id se eliminó" + " " + id})
+   return res.json({Estado: "El id se eliminó" + " " + id})
 
   })
 
