@@ -1,8 +1,7 @@
 import { existsSync, promises } from 'fs';
-import fs from 'fs';
 
 const route = '../src/files/productos.txt'
-//const route = '/home/juli/workspace/projects/Backend/src/files/productos.txt' (ROUTE PRUEBA)
+
 
 class Contenedor { 
     
@@ -85,7 +84,7 @@ getAll = async() => {
 
      }
 
-  // metodo para actualizar segun id (lo pense bastante pero no pude concretar nada)
+
 
 }
 
