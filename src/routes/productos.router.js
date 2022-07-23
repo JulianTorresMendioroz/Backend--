@@ -35,7 +35,7 @@ router.get('/allProducts', async (req,res)=>{
       let getId = await FileDataNueva.getById(id)
       res.send(getId) 
     }catch(error){
-      console.log(`Error:${error}`)
+      console.log(`Error${error}`)
     }
      
   })
@@ -54,7 +54,7 @@ router.get('/allProducts', async (req,res)=>{
       res.send(addProducts)
   })
 
-  // Actualizar producto segun id
+  // Actualizar producto segun id 
  
   router.put('/:id', async (req, res)=>{
     let id = req.params.id;
@@ -64,11 +64,10 @@ router.get('/allProducts', async (req,res)=>{
         return res.json([{ "error" : "Producto no encontrado" }]);
     }
     else {
-        FileDataNueva.update(req.params.id, req.body.title, req.body.price, req.body.thumbnail);
+        FileDataNueva.updateId(req.params.id, req.body.title, req.body.price);
         return res.json([{ "estado": "ACTUALIZADO" }]);
     }
     
-
   })
 
   // Elimina segun id 
