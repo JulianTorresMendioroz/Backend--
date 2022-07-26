@@ -5,12 +5,12 @@
 		"id": 1
 	},
 	{
-		"title": "Buzo Amarillo",
+		"title": "Buzo Rojo",
 		"price": "4200",
 		"id": 2
 	},
 	{
-		"title": "Buzo Marron",
+		"title": "Buzo Verde",
 		"price": "3200",
 		"id": 3
 	},
@@ -22,10 +22,10 @@
 	{
 		"title": "Buzo Bordo",
 		"price": "4500",
-		"id": 5
+		"id": 5 
 	},
 	{
-		"title": "Buzo Marron",
+		"title": "Buzo Gris",
 		"price": "3200",
 		"id": 6
 	}

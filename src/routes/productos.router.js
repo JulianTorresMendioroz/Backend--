@@ -77,7 +77,7 @@ router.get('/allProducts', async (req,res)=>{
     let id = req.params.id;
     
     FileDataNueva.deleteById(id);
-
+ 
    return res.json({Estado: "El id se eliminó" + " " + id})
 
   })

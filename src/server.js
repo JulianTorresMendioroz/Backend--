@@ -1,25 +1,28 @@
 import express from 'express';
-import Contenedor from './contenedor/contenedor.js';
 import productsRouter from './routes/productos.router.js';
+import viewsRouter from './routes/views.router.js'
+import viewProductosRouter from './routes/productos.router.js'
+import __dirname from './utils.js';
+import handlebars from 'express-handlebars';
 
 const app = express(); 
 const PORT = 8080;
 
-const FileDataNueva = new Contenedor();
-
-const serverListening = app.listen(PORT, ()=>{
+const server = app.listen(PORT, ()=>{
     console.log(`Listening on PORT ${PORT}`)
 })
 
-app.get('/',(req,res)=>{
+//configuracion de plantilla handlebars
 
-res.send('Servidor en ejecución') 
-
-})
+app.engine('handlebars',handlebars.engine());
+app.set('views', __dirname+'/views');
+app.set('view engine','handlebars');
 
 app.use(express.json());
 app.use('/api/productos', productsRouter);
-app.use(express.static('public'));
+app.use('/', viewsRouter);
+app.use('/productos', viewProductosRouter)
+app.use(express.static(__dirname+'/public'));
 
 
 
