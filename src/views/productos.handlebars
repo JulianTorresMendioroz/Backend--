@@ -1,11 +1,11 @@
-{{#if hasProducts}}
-{{#each prods}}
-<div>
-
-    <p>{{this.title}}</p>
-    <p>{{this.price}}</p>
-</div>
-{{/each}}
-{{else}}
-<h1>No hay productos</h1>
-{{/if}}
+        {{#if hasProductos}}
+            {{#each productos}}
+               
+                    <h3>{{this.title}}</h3>
+                    <p>{{this.price}}</p>
+                   
+                </div>
+            {{/each}}
+        {{else}}
+            <h2>No hay productos</h2>
+        {{/if}}

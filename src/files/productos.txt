@@ -1,12 +1,13 @@
 [
 	{
-		"title": "Buzo Azul",
-		"price": "4500",
+		"title": "Buzo Rojo",
+		"price": "3200",
 		"id": 1
 	},
 	{
-		"title": "Buzo Rojo",
-		"price": "4200",
+
+		"title": "Buzo Verde",
+		"price": "3200",
 		"id": 2
 	},
 	{
@@ -15,18 +16,24 @@
 		"id": 3
 	},
 	{
-		"title": "Buzo Marron",
+		"title": "Buzo Verde",
 		"price": "3200",
 		"id": 4
 	},
 	{
-		"title": "Buzo Bordo",
-		"price": "4500",
-		"id": 5 
+		"title": "Buzo Verde",
+		"price": "3200",
+		"id": 5
 	},
 	{
-		"title": "Buzo Gris",
+		"title": "Buzo Verde",
 		"price": "3200",
 		"id": 6
+	},
+	{
+		"title": "Buzo Verde",
+		"price": "3200",
+		"id": 7
 	}
+
 ]

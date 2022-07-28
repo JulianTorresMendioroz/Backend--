@@ -1,29 +1,29 @@
 import { existsSync, promises } from 'fs';
 
-const route = '../src/files/productos.txt'
+
+
+const route = './src/files/productos.txt'
 
 
 class Contenedor { 
-    
-getAll = async() => {
 
-    try {
-    
-        if(existsSync(route)){
-            let fileDataProd = await promises.readFile(route, 'utf8')
-            let productos = JSON.parse(fileDataProd)
-           return productos;
-            
-        }else{
+   
+   getAll = async() => {
 
-            return [];
-
-        }
+        try {
         
-    }catch (error) {
-        console.log("Error" + " " + error)
-    }}
-
+            existsSync(route);{
+                let fileDataProd = await promises.readFile(route, 'utf8')
+                let productos = JSON.parse(fileDataProd)
+                return productos; 
+                 }
+      
+            
+        }catch (error) {
+            console.log("Error" + " " + error)
+        }
+    }
+ 
     save = async (prods) => {
 
         try {

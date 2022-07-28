@@ -30,10 +30,16 @@ router.get('/allProducts', async (req,res)=>{
     // router.get('/:id([0-9])*', (req, res) => { // let id = req.params.id; // let producto = productos.listar(id); // if (producto == null) { // res.send({ error: "router.get('/:id([0-9])*', (req, res) => Producto no encontrado" }) // } else { // res.json(producto) // } // }) 
   
     try{
-      let getAllProducts = await FileDataNueva.getAll();
+
+      let id = req.params.id;
+      let Prods = await FileDataNueva.getById(id)
+      res.send(Prods)
+
+      /*let getAllProducts = await FileDataNueva.getAll();
+      let idParam = req.params.id;
       let id = Math.floor(Math.random()*getAllProducts.length)
       let getId = await FileDataNueva.getById(id)
-      res.send(getId) 
+      res.send(getId) */
     }catch(error){
       console.log(`Error${error}`)
     }
@@ -44,14 +50,9 @@ router.get('/allProducts', async (req,res)=>{
 
   router.post('/addProduct', async (req,res)=> { 
 
-      let addProducts = await FileDataNueva.getAll();
-    addProducts.push({
-      "title": "Buzo Naranja",
-      "price": "3400",
-      "id": 4
-      },)
-
-      res.send(addProducts)
+    let producto = req.body;
+    res.send({status: 'succes', message: 'Product added'});
+    await FileDataNueva.save(producto)
   })
 
   // Actualizar producto segun id 

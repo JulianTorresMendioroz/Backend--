@@ -4,6 +4,9 @@ import viewsRouter from './routes/views.router.js'
 import viewProductosRouter from './routes/productos.router.js'
 import __dirname from './utils.js';
 import handlebars from 'express-handlebars';
+import Contenedor from './contenedor/contenedor.js';
+
+
 
 const app = express(); 
 const PORT = 8080;
@@ -11,6 +14,8 @@ const PORT = 8080;
 const server = app.listen(PORT, ()=>{
     console.log(`Listening on PORT ${PORT}`)
 })
+
+const contenedorServer = new Contenedor();
 
 //configuracion de plantilla handlebars
 
@@ -20,9 +25,10 @@ app.set('view engine','handlebars');
 
 app.use(express.json());
 app.use('/api/productos', productsRouter);
-app.use('/', viewsRouter);
 app.use('/productos', viewProductosRouter)
 app.use(express.static(__dirname+'/public'));
+
+
 
 
 

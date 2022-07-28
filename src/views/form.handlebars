@@ -1,13 +1,19 @@
-<div>
-    <h1>Bienvenido al formulario</h1>
 
-    <h2>Ingrese su producto</h2>
+<a href='/productos'>
+  <button>All Products</button>
+</a>
 
-    NOMBRE:<input type="text"><br>
-    
-    <br>PRECIO: <input type="text"><br>
+<h2>Enter new Product</h2>
 
-  <br>FOTO/URL:<input type="text"><br>
+<form action='/productos' method='POST' content-type='application/json'>
+  <label>Name</label>
+  <input type='text' name='title' placeholder='example: Samsung A03 Core 6.5 2GB RAM 32GB' required />
 
-    <br><button>Enviar</button>
-</div>
+  <label>Price</label>
+  <input type='number' name='price' placeholder='example: 899' required />
+
+  <label>Image URL</label>
+  <input type='text' name='thumbnail' placeholder='example: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png' />
+
+  <button>Add Product</button>
+</form>
