@@ -26,7 +26,11 @@ app.set('view engine','handlebars');
 app.use(express.json());
 app.use('/api/productos', productsRouter);
 app.use('/productos', viewProductosRouter)
+app.use('/', productsRouter);
 app.use(express.static(__dirname+'/public'));
+
+
+
 
 
 

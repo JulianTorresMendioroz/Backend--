@@ -24,7 +24,29 @@ class Contenedor {
         }
     }
  
-    save = async (prods) => {
+    save= async(object)  =>{   
+        const data = await this.getAll();
+        if (data.length) {
+            const oProducto= await { ...object, id: data[data.length-1].id+1 };
+            data.push(oProducto);
+        } else {
+            const oProducto = await { ...object, id: 1 };
+            data.push(oProducto);
+        }
+        return await this.saveData(data) 
+    }
+   
+    saveData= async(data)=> {
+        try{
+            await fs.promises.writeFile(route, JSON.stringify(data, null, '\t'));
+        }
+        catch(e){
+            console.warn(`Fix : ${e}`)
+        }
+    }
+
+
+   /* save = async (prods) => {
 
         try {
         
@@ -43,7 +65,7 @@ class Contenedor {
          
         }
      }
-
+*/
      getById = async(id) => { 
 
         try { 

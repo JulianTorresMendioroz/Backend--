@@ -6,13 +6,12 @@ const FileDataNueva = new Contenedor();
 
 router.get('/',(req,res)=>{
 
-  res.send('Ruta base productos') 
-  
+  //res.send('Ruta base productos') 
+  res.render('form.handlebars')
   })
-
 // Obtengo todos los productos
 
-router.get('/allProducts', async (req,res)=>{
+router.get('/productos', async (req,res)=>{
 
     try{
       let getAllProducts = await FileDataNueva.getAll();
@@ -48,11 +47,29 @@ router.get('/allProducts', async (req,res)=>{
 
   // Recibe productos y agrega con id 
 
-  router.post('/addProduct', async (req,res)=> { 
+  router.post('/productos', async (req,res)=> { 
 
-    let producto = req.body;
+      let allProducts = await FileDataNueva.getAll();
+      let ultimoId = 0
+
+      if(allProducts.length) {
+        ultimoId = allProducts[allProducts.length - 1].id
+      }
+
+      const nuevoProducto = {
+        id: ultimoId + 1,
+        title: req.body.title ? req.body.title : 'No hay título',
+        price: req.body.price ? req.body.price : 0,
+      } 
+
+      await FileDataNueva.save(nuevoProducto)
+      res.redirect('/')
+
+
+
+    /*let producto = req.body;
     res.send({status: 'succes', message: 'Product added'});
-    await FileDataNueva.save(producto)
+    await FileDataNueva.save(producto) */
   })
 
   // Actualizar producto segun id 
