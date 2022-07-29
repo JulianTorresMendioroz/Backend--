@@ -1,6 +1,5 @@
 import { Router } from "express";
 import Contenedor from "../contenedor/contenedor.js";
-import { existsSync, promises } from 'fs';
 
 let dataContendor = new Contenedor();
 
@@ -12,11 +11,9 @@ router.get('/', (req, res)=>{
 })
 
 router.get('/productos', async (req, res)=>{
-    let productos = await dataContendor.getAll();
-    res.render('productos',{
-        hasProducts:productos.length>0,
-        productos
+    let allProducts = await dataContendor.getAll();
+    res.render('Productos', { allProducts })
     })
-})
+
 
 export default router;

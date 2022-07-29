@@ -11,7 +11,7 @@ router.get('/',(req,res)=>{
   })
 // Obtengo todos los productos
 
-router.get('/productos', async (req,res)=>{
+router.get('/allProducts', async (req,res)=>{
 
     try{
       let getAllProducts = await FileDataNueva.getAll();
