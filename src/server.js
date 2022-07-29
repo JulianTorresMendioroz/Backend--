@@ -1,7 +1,7 @@
 import express from 'express';
 import productsRouter from './routes/productos.router.js';
-import viewsRouter from './routes/views.router.js'
-import viewProductosRouter from './routes/productos.router.js'
+//import viewsRouter from './routes/views.router.js'
+//import viewProductosRouter from './routes/productos.router.js'
 import __dirname from './utils.js';
 import handlebars from 'express-handlebars';
 import Contenedor from './contenedor/contenedor.js';
@@ -24,8 +24,8 @@ app.set('views', __dirname+'/views');
 app.set('view engine','handlebars');
 
 app.use(express.json());
-app.use('/api/productos', productsRouter);
-app.use('/productos', viewProductosRouter)
+//.use('/api/productos', productsRouter);
+//app.use('/productos', viewProductosRouter)
 app.use('/', productsRouter);
 app.use(express.static(__dirname+'/public'));
 

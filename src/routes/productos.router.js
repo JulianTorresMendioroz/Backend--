@@ -11,11 +11,14 @@ router.get('/',(req,res)=>{
   })
 // Obtengo todos los productos
 
-router.get('/allProducts', async (req,res)=>{
+router.get('/productos', async (req,res)=>{
 
     try{
       let getAllProducts = await FileDataNueva.getAll();
-      res.send(getAllProducts)
+      //res.send(getAllProducts)
+      console.log(getAllProducts);
+      res.render('Productos', { getAllProducts })
+
     }catch(error){
       console.log(`Error: ${error}`)
     }
