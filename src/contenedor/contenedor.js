@@ -2,6 +2,7 @@ import { existsSync, promises } from 'fs';
 
 
 
+
 const route = './src/files/productos.txt'
 
 
@@ -36,6 +37,15 @@ class Contenedor {
         return await this.saveData(data) 
     }
    
+
+    saveData= async(data)=> {
+        try{
+            await promises.writeFile(route, JSON.stringify(data, null, '\t'));
+        }
+        catch(e){
+            console.warn(`Fix : ${e}`)
+        }
+    }
 
 
    /* save = async (prods) => {
