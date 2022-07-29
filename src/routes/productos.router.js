@@ -1,6 +1,7 @@
 import {Router} from 'express';
 import Contenedor from '../contenedor/contenedor.js';
 
+
 const router = Router();
 const FileDataNueva = new Contenedor();
 
@@ -17,7 +18,7 @@ router.get('/productos', async (req,res)=>{
       let getAllProducts = await FileDataNueva.getAll();
       //res.send(getAllProducts)
       console.log(getAllProducts);
-      res.render('Productos', { getAllProducts })
+      res.render('productos', { getAllProducts })
 
     }catch(error){
       console.log(`Error: ${error}`)
@@ -50,47 +51,29 @@ router.get('/productos', async (req,res)=>{
 
   // Recibe productos y agrega con id 
 
-  router.post('/productos', async (req,res)=> { 
+  router.post('/productos', async (req, res) => {
+    try {
+        const allProducts = await FileDataNueva.getAll()
 
-      let allProducts = await FileDataNueva.getAll();
-      let ultimoId = 0
+        let lastID = 0
 
-      if(allProducts.length) {
-        ultimoId = allProducts[allProducts.length - 1].id
-      }
+        if (allProducts.length) {
+            lastID = allProducts[allProducts.length - 1].id
+        }
 
-      const nuevoProducto = {
-        id: ultimoId + 1,
-        title: req.body.title ? req.body.title : 'No hay título',
-        price: req.body.price ? req.body.price : 0,
-      } 
-
-      await FileDataNueva.save(nuevoProducto)
-      res.redirect('/')
-
-
-
-    /*let producto = req.body;
-    res.send({status: 'succes', message: 'Product added'});
-    await FileDataNueva.save(producto) */
-  })
-
-  // Actualizar producto segun id 
- 
-  router.put('/:id', async (req, res)=>{
-    let id = req.params.id;
-    console.log('req.body : ',req.body);
-    let producto = await FileDataNueva.getById(id);
-    if (producto == null) {
-        return res.json([{ "error" : "Producto no encontrado" }]);
+        const newProduct = {
+            id: lastID + 1,
+            title: req.body.title ? req.body.title : 'No Title',
+            price: req.body.price ? req.body.price : 0,
+            
+        }
+        // console.log('newProduct',newProduct);
+        await FileDataNueva.save(newProduct)
+        res.redirect('/')
+    }catch (error) {
+        console.log(`ERROR POST /productos: ${error}`)
     }
-    else {
-        FileDataNueva.updateId(req.params.id, req.body.title, req.body.price);
-        return res.json([{ "estado": "ACTUALIZADO" }]);
-    }
-    
-  })
-
+})
   // Elimina segun id 
 
   router.delete('/:id', (req,res)=>{

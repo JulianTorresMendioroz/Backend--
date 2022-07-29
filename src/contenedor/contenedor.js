@@ -36,14 +36,6 @@ class Contenedor {
         return await this.saveData(data) 
     }
    
-    saveData= async(data)=> {
-        try{
-            await fs.promises.writeFile(route, JSON.stringify(data, null, '\t'));
-        }
-        catch(e){
-            console.warn(`Fix : ${e}`)
-        }
-    }
 
 
    /* save = async (prods) => {
